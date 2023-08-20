@@ -7,9 +7,9 @@
     Create a Low-Level Design for a common TicTacToe game with the following constraints as shared.
 
 ```
-  Input = 2 C C u1 X 3
+  Input = 2 C C u1 X 3 || 2 C C u2 O 3 || 2 C u2 O 3
 ```
-`Note -` *It is assumed that the input for computer should be like this. C C are mandatory to write to represent a computer.* 
+`Note -` *It is assumed that the input for computer should be like this. C C is recommended to write to represent a computer. But if there is only C then also it will handle computer. But no Symbol will we assign to the human player if not provided and it will validate and give warning accordingly.*
 
 ``` markdown
 # Test cases I have considered.
@@ -23,48 +23,59 @@
 </Pre>
 <b id="case1">Case 1 -</b> `Validate Number of players`
 
+```
     input = "2 u1 X u2 O 3"
 
-    Number of players is 2 so there should be only 2 player id and symbols. More than that will return warning.
+Number of players is 2 so there should be only 2 player id and symbols. More than that will return warning.
 
     => "Number of players and playerID's are not matching"  
+```
 
 <b id="case2">Case 2 -</b> `Validate Computer`
 
+```
     input = "3 C C u1 O C C 3"
 
-    Number of computer per match allowed is 1 only. So if there are 2 computers as a player return 
+Number of computer per match allowed is 1 only. So if there are 2 computers as a player return 
       
     => "No 2 Computers allowed"
+```
 
 <b id="case3">Case 3 -</b> `Undo`
-    
-    As only human player can undo so once a player done with his/her move then there will be a question after every human move - 
+
+```  
+As only human player can undo so once a player done with his/her move then there will be a question after every human move - 
         => Whether you want to undo y/n : 
-    Output will be according to the user preference.
+Output will be according to the user preference.
     =========================================
-    if undo == y:
-        the last move is undo.
-    else:
-        next player turn.
+        if undo == y:
+            the last move is undo.
+        else:
+            next player turn.
     =========================================
+```
 
 <b id="case4">Case 4 -</b> `Validate Symbol`
-    
-    Each player must be assign a valid and unique symbol.
+
+```
+Each player must be assign a valid and unique symbol.
+
      => Symbol C is for computer only.
-    Symbol must be validated. 
-    If there are 2 players and only one player has symbol if it is a computer assign a symbol or else warn to re enter the player name and symbols.
+
+Symbols must be validated. 
+If there are 2 players and only one player has symbol if it is a computer assign a symbol or else warn to re enter the player name and symbols.
 
     => 203: "Player Symbols are not unique",
-
+```
 
 <b id="case5">Case 5 -</b> `Validate PlayerId`
-    
-    Each player have a valid player Id/Name. 
-    If there are 2 players both players should have unique playerID.
+
+```
+Each player have a valid player Id/Name. 
+If there are 2 players both players should have unique playerID.
     
     => 204: "Player Id's are not unique",
+```
 
 ## Approach
 
