@@ -1,7 +1,6 @@
 def CheckWinnerRow(board):
     # Check for horizontal win
     boardLen = len(board)
-    arr = []
     i = 0
     while i<boardLen:
         if len(set(board[i])) == 1 and board[i][0] != ' ':
