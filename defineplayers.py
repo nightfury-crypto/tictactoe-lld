@@ -31,8 +31,11 @@ def Players(StartGame):
                 
         if len(ptemp[k]) == 1:
             return 205
+        
+
         if (k+1 != len(ptemp) and len(ptemp[k + 1]) == 1 and ptemp[k + 1] != "C"):
             pArry.append([ptemp[k], ptemp[k + 1]])
+
         else:
             while True:
                 if symbols[symbolToAssign] not in ValidateSymbol or symbols[symbolToAssign] not in ptemp:
@@ -62,11 +65,13 @@ def Players(StartGame):
         else:
             return 203
         
-        # validate player Id
-        if ptemp[k] not in validatePlayerId:
-            validatePlayerId.append(ptemp[k])
-        else:
-            print(pArry)
-            return 204
+        ValidatePlayerId(ptemp[k], validatePlayerId)
         k = k + 2
     return pArry
+
+
+def ValidatePlayerId(pId, validatePlayerId,):
+    if pId not in validatePlayerId:
+        validatePlayerId.append(pId)
+    else:
+        return 204

@@ -63,7 +63,8 @@ Each player must be assign a valid and unique symbol.
      => Symbol C is for computer only.
 
 Symbols must be validated. 
-If there are 2 players and only one player has symbol if it is a computer assign a symbol or else warn to re enter the player name and symbols.
+If there are 2 players and only one player has symbol if it is a computer assign a symbol.
+If a human player has chosen symbol "C" then replace it with some other symbol.
 
     => 203: "Player Symbols are not unique",
 ```
@@ -73,6 +74,7 @@ If there are 2 players and only one player has symbol if it is a computer assign
 ```
 Each player have a valid player Id/Name. 
 If there are 2 players both players should have unique playerID.
+
     => 204: "Player Id's are not unique",
 
 Player name/id should not be a single character (min 2 characters)
@@ -82,7 +84,38 @@ Player name/id should not be a single character (min 2 characters)
     =========================================================
     Player name/id should not be a single character (min 2 characters mandatory)
     =========================================================
+```
 
+<b id="case6">Case 6 -</b> `Assign unique Symbols if not provided.`
+
+```
+Each player have a valid and unique Symbol. 
+If there is any player without symbol - assign any unique symbol to him.
+
+This will only work if - 
+    Player name/id should not be a single character (min 2 characters)
+
+    => Total_Players playerID Symbol boardSize:
+        eg. 2 u1 O u2 X 3 : 2 u1 u2 3
+    =========================================================
+    players = [["u1", "X"], ["u2", "O"]]
+    =========================================================
+```
+
+<b id="case7">Case 7 -</b> `Assign unique Symbols if not provided.`
+
+```
+Each player have a valid and unique Symbol. 
+If there is any player without symbol - assign any unique symbol to him.
+
+This will only work if - 
+    Player name/id should not be a single character (min 2 characters)
+
+    => Total_Players playerID Symbol boardSize:
+        eg. 2 u1 O u2 X 3 : 2 u1 u2 3
+    =========================================================
+    players = [["u1", "X"], ["u2", "O"]]
+    =========================================================
 ```
 
 ## Approach
@@ -106,7 +139,6 @@ Player name/id should not be a single character (min 2 characters)
 ```py
 ErrorCodes = {
     200: "No error",
-    201: "There's a player without Symbol. Please Check your input",
     202: "No 2 Computers allowed",
     203: "Player Symbols are not unique",
     204: "Player Id's are not unique",
