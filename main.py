@@ -7,8 +7,16 @@ import os
 
 if __name__ == "__main__":
     os.system("cls||clear")
-    StartGame = input('''Total_Players playerID Symbol boardSize:
-eg. 2 u1 O u2 X 3 : ''').strip().split(" ")
+    while True:
+        StartGame = input('''Total_Players playerID Symbol boardSize:
+    eg. 2 u1 O u2 X 3 : ''').strip().split(" ")
+        if StartGame[0].isdigit() and StartGame[len(StartGame) - 1].isdigit():
+            break
+        else:
+            print("=========================================================")
+            print("Number of players and boardSize should be integer")
+            print("=========================================================")
+            continue
     validatePlayers = Players(StartGame)
     if type(validatePlayers) != type([]):
         if ErrorCodes.get(validatePlayers) != None:
