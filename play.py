@@ -45,9 +45,7 @@ def Play(StartGame, board, boardSize, history):
                 break
 
         win = (
-            CheckWinnerRow(board)
-            or CheckWinnerDiagonal(board)
-            or CheckWinnerColumn(board)
+            CheckWinner(board)or CheckWinnerColumn(board)
         )
         if win == True:
             if playerTurnCheck[turn][0] == "C":

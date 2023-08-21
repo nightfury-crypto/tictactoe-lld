@@ -1,18 +1,8 @@
-def CheckWinnerRow(board):
-    # Check for horizontal win
-    boardLen = len(board)
-    i = 0
-    while i<boardLen:
-        if len(set(board[i])) == 1 and board[i][0] != ' ':
-            return True
-        i = i + 1
-    return False
-
 def CheckWinnerColumn(board):
     # Check for vertical win
     boardLen = len(board)
-    colArr = []
     i = 0
+    colArr = []
     while i<boardLen:
         j = 0
         while j<boardLen:
@@ -24,25 +14,30 @@ def CheckWinnerColumn(board):
         i = i + 1
     return False
 
-def CheckWinnerDiagonal(board):
-    # Check for diagonal win
+# checkWinner row and diagonal
+def CheckWinner(board):
     boardLen = len(board)
     diagonal = set()
     antidiagonal = set()
-    i = 0
-    while i<boardLen:
+    
+    for i in range(boardLen):
+        # for roes
+        if len(set(board[i])) == 1 and board[i][0] != ' ':
+            return True
+        
+        # for diagonal
         if board[i][i] not in diagonal:
             diagonal.add(board[i][i])
         
-    # antidiagonal
+        # for antidiagonal
         if board[i][boardLen - i - 1] not in antidiagonal:
             antidiagonal.add(board[i][boardLen - i - 1])
-        
-        i = i + 1
-    if len(diagonal) == 1 and  diagonal.issuperset(" ") == False:
+    
+    if len(diagonal) == 1 and ' ' not in diagonal:
         return True
 
-    if len(antidiagonal) == 1 and  antidiagonal.issuperset(" ") == False:
+    if len(antidiagonal) == 1 and ' ' not in antidiagonal:
         return True
-
+    
     return False
+
