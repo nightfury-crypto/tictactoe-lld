@@ -28,19 +28,22 @@ def CheckWinnerColumn(board):
 def CheckWinnerDiagonal(board):
     # Check for diagonal win
     boardLen = len(board)
-    diagonal = []
+    diagonal = set()
+    antidiagonal = set()
     i = 0
     while i<boardLen:
-        diagonal.append(board[i][i])
-        i = i + 1
-    if len(set(diagonal)) == 1 and diagonal[0] != ' ':
-        return True
+        if board[i][i] not in diagonal:
+            diagonal.add(board[i][i])
+        
     # antidiagonal
-    antidiagonal = []
-    i = 0
-    while i<boardLen:
-        antidiagonal.append(board[i][boardLen - i - 1])
+        if board[i][boardLen - i - 1] not in antidiagonal:
+            antidiagonal.add(board[i][boardLen - i - 1])
+        
         i = i + 1
-    if len(set(antidiagonal)) == 1 and antidiagonal[0] != ' ':
+    if len(diagonal) == 1 and  diagonal.issuperset(" ") == False:
         return True
+
+    if len(antidiagonal) == 1 and  antidiagonal.issuperset(" ") == False:
+        return True
+
     return False
