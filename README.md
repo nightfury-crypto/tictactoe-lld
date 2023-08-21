@@ -7,9 +7,11 @@
     Create a Low-Level Design for a common TicTacToe game with the following constraints as shared.
 
 ```
-  Input = 2 C C u1 X 3 || 2 C C u2 O 3 || 2 C u2 O 3
+  Input = 2 C C u1 X 3 || 2 C C u2 O 3 || 2 C u2 O 3 || 2 u1 u2 3 || 2 ux X u2 3
 ```
-`Note -` *It is assumed that the input for computer should be like this. C C is recommended to write to represent a computer. But if there is only C then also it will handle computer. But no Symbol will we assign to the human player if not provided and it will validate and give warning accordingly.*
+👍 All the examples of input provided above can be handle and won't break the game.👍
+
+`Note -` *It is assumed that the input for computer should be like this. C C is recommended to write to represent a computer. But if there is only C then also it will handle computer. If there is no symbol provided for human player then system will assign one.*
 
 ``` markdown
 # Test cases I have considered.
@@ -20,6 +22,10 @@
     <a href="#case3">3. Undo</a>
     <a href="#case4">4. Validate Symbol</a>
     <a href="#case5">5. Validate PlayerID.</a>
+    <a href="#case6">6. Assign unique Symbols if not provided.</a>
+    <a href="#case7">7. Decide Winner.</a>
+    <a href="#case8">7. Check Draw.</a>
+    
 </Pre>
 <b id="case1">Case 1 -</b> `Validate Number of players`
 
@@ -102,20 +108,20 @@ This will only work if -
     =========================================================
 ```
 
-<b id="case7">Case 7 -</b> `Assign unique Symbols if not provided.`
+<b id="case7">Case 7 -</b> `Winner`
 
 ```
-Each player have a valid and unique Symbol. 
-If there is any player without symbol - assign any unique symbol to him.
+    To decide winner I used set and while loop. 
+    as in set duplicates are overwrite so if in one array all element are same 
+        then the len(set()) will return 1 hence this means every Symbol is same. 
+```
 
-This will only work if - 
-    Player name/id should not be a single character (min 2 characters)
+<b id="case8">Case 8 -</b> `Draw`
 
-    => Total_Players playerID Symbol boardSize:
-        eg. 2 u1 O u2 X 3 : 2 u1 u2 3
-    =========================================================
-    players = [["u1", "X"], ["u2", "O"]]
-    =========================================================
+```
+    To decide whether it is Draw or not.
+    just check whether isDraw == N*N and isDraw[i] != " ".
+    This will return Draw.
 ```
 
 ## Approach
@@ -142,6 +148,7 @@ ErrorCodes = {
     202: "No 2 Computers allowed",
     203: "Player Symbols are not unique",
     204: "Player Id's are not unique",
+    205: "Player name/id should not be a single character (min 2 characters)",
 }
 ```
 
