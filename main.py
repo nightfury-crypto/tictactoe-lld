@@ -20,11 +20,15 @@ if __name__ == "__main__":
     validatePlayers = Players(StartGame)
     if type(validatePlayers) != type([]):
         if ErrorCodes.get(validatePlayers) != None:
+            print("=========================================================")
             print(ErrorCodes.get(validatePlayers))
+            print("=========================================================")
             exit()
     else:
         if len(validatePlayers) != int(StartGame[0]):
+            print("=========================================================")
             print("Number of players and Number of playerID's are not matching")
+            print("=========================================================")
             exit()
     boardSize = int(StartGame[len(StartGame) - 1])
     board = []

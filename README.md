@@ -73,8 +73,16 @@ If there are 2 players and only one player has symbol if it is a computer assign
 ```
 Each player have a valid player Id/Name. 
 If there are 2 players both players should have unique playerID.
-    
     => 204: "Player Id's are not unique",
+
+Player name/id should not be a single character (min 2 characters)
+
+    => Total_Players playerID Symbol boardSize:
+        eg. 2 u1 O u2 X 3 : 2 u1 O u X 3
+    =========================================================
+    Player name/id should not be a single character (min 2 characters mandatory)
+    =========================================================
+
 ```
 
 ## Approach
