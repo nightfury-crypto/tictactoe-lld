@@ -6,7 +6,6 @@ def Players(StartGame):
     validatePlayerId = []
     k = 0
     while k < len(ptemp):
-        print(ptemp[k], k)
         if isComp == True:
             if ptemp[k] == "C":
                 return 202
