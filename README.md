@@ -24,7 +24,7 @@
     <a href="#case5">5. Validate PlayerID.</a>
     <a href="#case6">6. Assign unique Symbols if not provided.</a>
     <a href="#case7">7. Decide Winner.</a>
-    <a href="#case8">7. Check Draw.</a>
+    <a href="#case8">8. Check Draw.</a>
     
 </Pre>
 <b id="case1">Case 1 -</b> `Validate Number of players`
@@ -157,15 +157,16 @@ ErrorCodes = {
 ├── <b style="font-size: 1.2em; color: crimson"><a style="color:inherit;" href="#file"># tic_tac_toe </a></b>
    ├── <b style="color: #25f;">main.py - </b>main file
    ├── <b>play.py</b>
-   ├── <b>createboard.py</b>
-   ├── <b>displayboard.py</b>
-   ├── <b>defineplayer.py</b>
-   ├── <b>playerturn.py</b>
-   ├── <b>computerturn.py</b>
-   ├── <b>draw.py</b>
-   ├── <b>winner.py</b>
-   ├── <b>undo.py</b>
-   ├── <b>errorcodes.py</b>
+   ├────/Modals/
+        ├── <b>createboard.py</b>
+        ├── <b>displayboard.py</b>
+        ├── <b>defineplayer.py</b>
+        ├── <b>playerturn.py</b>
+        ├── <b>computerturn.py</b>
+        ├── <b>draw.py</b>
+        ├── <b>winner.py</b>
+        ├── <b>undo.py</b>
+        ├── <b>errorcodes.py</b>
    ├── <b>README.md</b> <i>(this file)</i>
 </pre>
 
