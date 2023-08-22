@@ -21,7 +21,7 @@ def CheckWinner(board):
     antidiagonal = set()
     
     for i in range(boardLen):
-        # for roes
+        # for rows
         if len(set(board[i])) == 1 and board[i][0] != ' ':
             return True
         

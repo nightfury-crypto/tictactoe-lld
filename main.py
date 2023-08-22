@@ -1,7 +1,7 @@
-from createboard import createBoard
-from displayboard import displayBoard
-from defineplayers import Players
-from errorcodes import ErrorCodes
+from modals.createboard import createBoard
+from modals.displayboard import displayBoard
+from modals.defineplayers import Players
+from modals.errorcodes import ErrorCodes
 from play import Play
 import os
 

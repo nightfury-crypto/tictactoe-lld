@@ -1,11 +1,11 @@
 import os
-from draw import CheckDraw
-from playerturn import PlayerTurn
-from computerturn import ComputerTurn
-from displayboard import displayBoard
-from defineplayers import Players
-from winner import *
-from undo import UndoMove
+from modals.draw import CheckDraw
+from modals.playerturn import PlayerTurn
+from modals.computerturn import ComputerTurn
+from modals.displayboard import displayBoard
+from modals.defineplayers import Players
+from modals.winner import *
+from modals.undo import UndoMove
 
 
 def Play(StartGame, board, boardSize, history):
