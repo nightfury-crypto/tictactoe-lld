@@ -113,7 +113,9 @@ This will only work if -
 ```
     To decide winner I used set and while loop. 
     as in set duplicates are overwrite so if in one array all element are same 
-        then the len(set()) will return 1 hence this means every Symbol is same. 
+        then the len(set()) will return 1 hence this means every Symbol is same.
+            < no loop is used. >
+    It's the most efficient algorithm to check the winner.
 ```
 
 <b id="case8">Case 8 -</b> `Draw`
@@ -121,7 +123,8 @@ This will only work if -
 ```
     To decide whether it is Draw or not.
     just check whether isDraw == N*N and isDraw[i] != " ".
-    This will return Draw.
+    we can do this by len(history) == N*N.
+      => This will return Draw.
 ```
 
 ## Approach
