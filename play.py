@@ -10,7 +10,7 @@ from modals.errorcodes import ErrorCodes
 from modals.printStatement import toPrint
 
 
-def Play(StartGame, board, boardSize, history):
+def Play(StartGame, board, boardSize, history, columnArr, diagonalArr, antiDiagonalArr):
     isPlaying = True
     turn = 0
     while isPlaying:
@@ -20,32 +20,31 @@ def Play(StartGame, board, boardSize, history):
             return
         print("")
         if playerTurnCheck[turn][0] == "C":
+            os.system("cls || clear")
             toPrint("Computer's Turn")
             print("")
-            ComputerTurn(board, boardSize, history)
-            os.system("cls||clear")
+            coordinates = ComputerTurn(board, boardSize, history, columnArr, diagonalArr, antiDiagonalArr)
             displayBoard(board)
 
         else:
             toPrint(f"Player Turn - {playerTurnCheck[turn][0]}")
             print("")
-            check = PlayerTurn(playerTurnCheck, turn, board, history, boardSize)
-            if check == "next":
-                os.system("cls||clear")
-                displayBoard(board)
-            elif check == "quit":
-                toPrint("Player " + playerTurnCheck[turn][0] + " left")
+            coordinates = PlayerTurn(
+                playerTurnCheck, turn, board, history, boardSize, columnArr, diagonalArr, antiDiagonalArr
+            )
+            if coordinates == "quit":
+                toPrint(f"Player {playerTurnCheck[turn][0]} left")
                 isPlaying = False
                 break
 
-        win = (
-            CheckWinner(board)or CheckWinnerColumn(board)
-        )
+        os.system("cls || clear")
+        displayBoard(board)
+        win = CheckRowWinner(board, coordinates) or CheckColumnWinner(coordinates, columnArr) or CheckDiagonalWinner(diagonalArr) or CheckAntiDiagonalWinner(antiDiagonalArr)
         if win == True:
             if playerTurnCheck[turn][0] == "C":
-                toPrint("Computer won")
+                toPrint(f'Computer - {coordinates["Symbol"]} won')
             else:
-                toPrint("Player " + playerTurnCheck[turn][0] + " won")
+                toPrint(f'Player {playerTurnCheck[turn][0]} - {coordinates["Symbol"]} won')
             isPlaying = False
             break
         if CheckDraw(history, boardSize) == True:
@@ -58,13 +57,14 @@ def Play(StartGame, board, boardSize, history):
                 toPrint("Enter valid input")
                 isUndo = input("Whether u want to undo the move? (y/n) : ")
             if isUndo == "y":
-                UndoMove(StartGame, history, board, turn)
-        if playerTurnCheck[turn][0] != "C" and isUndo == "n":
-            if turn < len(playerTurnCheck) - 1:
-                turn = turn + 1
-            else:
-                turn = 0
-        else:
+                toPrint("Undoing the move")
+                checkUndo = UndoMove(StartGame, history, board, turn, columnArr, diagonalArr, antiDiagonalArr)
+                if checkUndo != "None":
+                    os.system("cls || clear")
+                    displayBoard(board)
+        os.system("cls || clear")
+        displayBoard(board)
+        if playerTurnCheck[turn][0] == "C" or isUndo == "n":
             if turn < len(playerTurnCheck) - 1:
                 turn = turn + 1
             else:

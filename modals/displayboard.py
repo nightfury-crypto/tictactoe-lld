@@ -1,3 +1,4 @@
+import os
 def displayBoard(board):
     print("")
     for i in range(0, len(board)):

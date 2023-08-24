@@ -5,6 +5,7 @@ from modals.errorcodes import ErrorCodes
 from play import Play
 import os
 from modals.printStatement import toPrint
+from modals.maintainArray import *
 
 if __name__ == "__main__":
     os.system("cls||clear")
@@ -28,6 +29,13 @@ if __name__ == "__main__":
     boardSize = int(StartGame[len(StartGame) - 1])
     board = []
     history = []
+    columnArr = []
+    diagonalArr = []
+    antiDiagonalArr = []
+    
     createBoard(board, boardSize)
+    handleColArr(columnArr, board)
+    handlecross(diagonalArr, board)
+    handlecross(antiDiagonalArr, board)
     displayBoard(board)
-    Play(StartGame, board, boardSize, history)
+    Play(StartGame, board, boardSize, history, columnArr, diagonalArr, antiDiagonalArr)
