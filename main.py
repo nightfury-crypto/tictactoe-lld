@@ -4,6 +4,7 @@ from modals.defineplayers import Players
 from modals.errorcodes import ErrorCodes
 from play import Play
 import os
+from modals.printStatement import toPrint
 
 if __name__ == "__main__":
     os.system("cls||clear")
@@ -13,22 +14,16 @@ if __name__ == "__main__":
         if StartGame[0].isdigit() and StartGame[len(StartGame) - 1].isdigit():
             break
         else:
-            print("=========================================================")
-            print("Number of players and boardSize should be integer")
-            print("=========================================================")
+            toPrint("Number of players and boardSize should be integer")
             continue
     validatePlayers = Players(StartGame)
     if type(validatePlayers) != type([]):
         if ErrorCodes.get(validatePlayers) != None:
-            print("=========================================================")
-            print(ErrorCodes.get(validatePlayers))
-            print("=========================================================")
+            toPrint(ErrorCodes.get(validatePlayers))
             exit()
     else:
         if len(validatePlayers) != int(StartGame[0]):
-            print("=========================================================")
-            print("Number of players and Number of playerID's are not matching")
-            print("=========================================================")
+            toPrint("Number of players and Number of playerID's are not matching")
             exit()
     boardSize = int(StartGame[len(StartGame) - 1])
     board = []

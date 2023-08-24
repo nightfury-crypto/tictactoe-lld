@@ -1,3 +1,5 @@
+from modals.printStatement import toPrint
+
 def PlayerTurn(playerTurnCheck, turn, board, history, boardSize):
     while True:
         pos = input(f'''Enter block i,j : 
@@ -16,12 +18,10 @@ or "q" to quit. : ''').split(",")
                     history.append([i,j])
                     return "next"
                 else:
-                    print("Already filled. Try other coorinates")
+                    toPrint("Already filled. Try other coorinates")
             else:
-                print("")
-                print("i,j are out of range. Enter valid input")
-                print("")
+                toPrint("i,j are out of range. Enter valid input")
                 continue
         else:
-            print("Enter valid input")
+            toPrint("Enter valid input")
             continue

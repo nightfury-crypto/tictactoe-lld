@@ -14,6 +14,12 @@ def CheckWinnerColumn(board):
         i = i + 1
     return False
 
+
+def checkWinnerCrossing(boardPos, arr):
+    if boardPos not in arr:
+        arr.add(boardPos)
+    return arr
+
 # checkWinner row and diagonal
 def CheckWinner(board):
     boardLen = len(board)
@@ -26,18 +32,12 @@ def CheckWinner(board):
             return True
         
         # for diagonal
-        if board[i][i] not in diagonal:
-            diagonal.add(board[i][i])
+        diagonal = checkWinnerCrossing(board[i][i], diagonal)
         
         # for antidiagonal
-        if board[i][boardLen - i - 1] not in antidiagonal:
-            antidiagonal.add(board[i][boardLen - i - 1])
+        antidiagonal = checkWinnerCrossing(board[i][boardLen - i - 1], antidiagonal)
     
-    if len(diagonal) == 1 and ' ' not in diagonal:
-        return True
-
-    if len(antidiagonal) == 1 and ' ' not in antidiagonal:
+    if (len(diagonal) == 1 and ' ' not in diagonal) or (len(antidiagonal) == 1 and ' ' not in antidiagonal):
         return True
     
     return False
-

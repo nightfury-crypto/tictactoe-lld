@@ -6,6 +6,8 @@ from modals.displayboard import displayBoard
 from modals.defineplayers import Players
 from modals.winner import *
 from modals.undo import UndoMove
+from modals.errorcodes import ErrorCodes
+from modals.printStatement import toPrint
 
 
 def Play(StartGame, board, boardSize, history):
@@ -13,34 +15,26 @@ def Play(StartGame, board, boardSize, history):
     turn = 0
     while isPlaying:
         playerTurnCheck = Players(StartGame)
-        if playerTurnCheck == "No 2 Computers allowed":
-            print("==================================")
-            print(playerTurnCheck)
-            print("==================================")
+        if playerTurnCheck == 202:
+            toPrint(ErrorCodes.get(202))
             return
         print("")
         if playerTurnCheck[turn][0] == "C":
-            print("==================================")
-            print("Computer's Turn")
-            print("==================================")
+            toPrint("Computer's Turn")
             print("")
             ComputerTurn(board, boardSize, history)
             os.system("cls||clear")
             displayBoard(board)
 
         else:
-            print("==================================")
-            print(f"Player Turn - {playerTurnCheck[turn][0]}")
-            print("==================================")
+            toPrint(f"Player Turn - {playerTurnCheck[turn][0]}")
             print("")
             check = PlayerTurn(playerTurnCheck, turn, board, history, boardSize)
             if check == "next":
                 os.system("cls||clear")
                 displayBoard(board)
             elif check == "quit":
-                print("==================================")
-                print("Player " + playerTurnCheck[turn][0] + " left")
-                print("==================================")
+                toPrint("Player " + playerTurnCheck[turn][0] + " left")
                 isPlaying = False
                 break
 
@@ -49,25 +43,19 @@ def Play(StartGame, board, boardSize, history):
         )
         if win == True:
             if playerTurnCheck[turn][0] == "C":
-                print("==================================")
-                print("Computer won")
-                print("==================================")
+                toPrint("Computer won")
             else:
-                print("==================================")
-                print("Player " + playerTurnCheck[turn][0] + " won")
-                print("==================================")
+                toPrint("Player " + playerTurnCheck[turn][0] + " won")
             isPlaying = False
             break
         if CheckDraw(history, boardSize) == True:
-            print("==================================")
-            print("It's a Draw. No one won")
-            print("==================================")
+            toPrint("It's a Draw. No one won")
             isPlaying = False
             break
         if playerTurnCheck[turn][0] != "C":
             isUndo = input("Whether u want to undo the move? (y/n) : ")
             while isUndo != "y" and isUndo != "n":
-                print("Enter valid input")
+                toPrint("Enter valid input")
                 isUndo = input("Whether u want to undo the move? (y/n) : ")
             if isUndo == "y":
                 UndoMove(StartGame, history, board, turn)
