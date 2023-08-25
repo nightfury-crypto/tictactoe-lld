@@ -111,7 +111,7 @@ This will only work if -
 <b id="case7">Case 7 -</b> `Winner`
 
 ```
-    To decide winner I used set and while loop. 
+    To decide winner I used set. 
     as in set duplicates are overwrite so if in one array all element are same 
         then the len(set()) will return 1 hence this means every Symbol is same.
             < no loop is used. >
